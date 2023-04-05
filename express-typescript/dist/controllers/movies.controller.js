@@ -16,8 +16,8 @@ exports.updateMovie = exports.deleteMovie = exports.create = exports.getOne = ex
 const movies_model_1 = __importDefault(require("../models/movies.model"));
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const movie = yield movies_model_1.default.find({}).limit(100);
-        res.json({ status: true, movie });
+        const result = yield movies_model_1.default.find({}).limit(100);
+        res.json({ status: true, result });
     }
     catch (err) {
         res.json({ status: false, message: err });
@@ -27,8 +27,8 @@ exports.getAll = getAll;
 const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { _id } = req.params;
     try {
-        const movie = yield movies_model_1.default.findById({ _id });
-        res.json({ status: true, movie });
+        const result = yield movies_model_1.default.findById({ _id });
+        res.json({ status: true, result });
     }
     catch (err) {
         res.json({ status: false, message: err });
@@ -37,8 +37,8 @@ const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getOne = getOne;
 const create = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const movie = new movies_model_1.default(req.body);
-        const savedMovie = yield movie.save();
+        const result = new movies_model_1.default(req.body);
+        const savedMovie = yield result.save();
         res.json({ status: true, savedMovie });
     }
     catch (error) {
@@ -49,8 +49,8 @@ exports.create = create;
 const deleteMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { _id } = req.params;
     try {
-        const movie = yield movies_model_1.default.findByIdAndDelete({ _id });
-        res.json({ status: true, movie });
+        const result = yield movies_model_1.default.findByIdAndDelete({ _id });
+        res.json({ status: true, result });
     }
     catch (err) {
         res.json({ status: false, message: err });
@@ -60,8 +60,8 @@ exports.deleteMovie = deleteMovie;
 const updateMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { _id } = req.params;
     try {
-        const movie = yield movies_model_1.default.findByIdAndUpdate({ _id }, req.body);
-        res.json({ status: true, movie });
+        const result = yield movies_model_1.default.findByIdAndUpdate({ _id }, req.body);
+        res.json({ status: true, result });
     }
     catch (err) {
         res.json({ status: false, message: err });
