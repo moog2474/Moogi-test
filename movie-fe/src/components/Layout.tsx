@@ -1,15 +1,23 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Meta } from './Meta'
 import { Header } from './Header'
 import { Footer } from './Footer'
 
-export const Layout = ({children}:any) => {
+interface MyProps{
+  children?: ReactNode
+}
+
+const Layout = ({children}: MyProps): JSX.Element => {
   return (
     <>
-    <Meta/>
-    <Header/>
-    <main>{children}</main>
-    <Footer/>
-    </>
+    <Meta />
+    <div className="max-w-5xl mx-auto pt-6">
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </div>
+  </>
   )
 }
+
+export default Layout

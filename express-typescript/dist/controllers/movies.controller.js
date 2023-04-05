@@ -16,7 +16,7 @@ exports.updateMovie = exports.deleteMovie = exports.create = exports.getOne = ex
 const movies_model_1 = __importDefault(require("../models/movies.model"));
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield movies_model_1.default.find({}).limit(100);
+        const result = yield movies_model_1.default.find({}).limit(50).skip(22000);
         res.json({ status: true, result });
     }
     catch (err) {

@@ -43,5 +43,5 @@ const movieSchema = new mongoose_1.Schema({
         lastUPdated: Date
     }
 });
-const Movie = (0, mongoose_1.model)("movies", movieSchema);
-exports.default = Movie;
+const Movies = (0, mongoose_1.model)("movies", movieSchema);
+exports.default = Movies;

@@ -87,6 +87,6 @@ const movieSchema = new Schema<IMovie>({
 })
 
 
-const Movie = model<IMovie>("movies", movieSchema);
+const Movies = model<IMovie>("movies", movieSchema);
 
-export default Movie;
+export default Movies;

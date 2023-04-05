@@ -1,15 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import { Movie } from '@/components/Movie'
-
-const inter = Inter({ subsets: ['latin'] })
+// import { Cover } from "@/component/Cover";
+import Movie from "@/components/Movie";
 
 export default function Home() {
   return (
     <>
+      {/* <Cover /> */}
       <Movie />
     </>
-  )
+  );
 }
