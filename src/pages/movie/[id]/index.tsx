@@ -1,0 +1,19 @@
+import React from "react";
+import Image from "next/image";
+import { IMovie } from "@/components/Movie";
+
+
+interface myProps{
+  item: IMovie;
+  key?: number
+}
+
+const index = ({item}: myProps) : JSX.Element => {
+  return (
+    <div>
+      Movie Detials huudas
+
+    </div>
+  );
+};
+export default index;
