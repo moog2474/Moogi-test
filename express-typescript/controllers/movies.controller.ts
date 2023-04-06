@@ -3,8 +3,24 @@ import { Request, Response } from 'express';
 
 
 const getAll = async (req: Request, res: Response) => {
+
+    const {
+        pageSize,
+        filter: {searchTxt}
+    } = req.body
+
+    const count = pageSize * 30 + 1;
+
+    const filter = {
+        $or: [
+            {title: {$regex: searchTxt, $options: "i"}}
+            // {plot: {$regex: searchTxt}},
+            // {fullplot: /.*m.*/}
+        ],
+    }
+
     try {
-        const result = await Movies.find({}).limit(50).skip(22000);
+        const result = await Movies.find(filter).limit(30).skip(count);
         res.json({ status: true, result })
     }
     catch (err) {

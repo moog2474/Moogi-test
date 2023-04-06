@@ -15,8 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateMovie = exports.deleteMovie = exports.create = exports.getOne = exports.getAll = void 0;
 const movies_model_1 = __importDefault(require("../models/movies.model"));
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { pageSize, filter: { searchTxt } } = req.body;
+    const count = pageSize * 30 + 1;
+    const filter = {
+        $or: [
+            { title: { $regex: searchTxt, $options: "i" } }
+            // {plot: {$regex: searchTxt}},
+            // {fullplot: /.*m.*/}
+        ],
+    };
     try {
-        const result = yield movies_model_1.default.find({}).limit(50).skip(22000);
+        const result = yield movies_model_1.default.find(filter).limit(30).skip(count);
         res.json({ status: true, result });
     }
     catch (err) {

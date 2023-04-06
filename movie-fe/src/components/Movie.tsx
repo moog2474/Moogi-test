@@ -50,31 +50,30 @@ export interface IMovie {
 }
 
 
-const Movie = (): JSX.Element => {
+const Movie = ({movie}: {movie: Array<IMovie>}): JSX.Element => {
 
-  const [movies, setMovies] = useState<Array<IMovie>>([]);
+  // const [movies, setMovies] = useState<Array<IMovie>>([]);
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
-  const getData = () => {
-    axios
-      .get("http://localhost:9000/api/movie")
-      .then((res) => {
-        setMovies(res.data.result)
-      })
-      .catch((err) => console.log(err))
-  };
+  // const getData = () => {
+  //   axios
+  //     .get("http://localhost:9000/api/movie")
+  //     .then((res) => {
+  //       setMovies(res.data.result)
+  //     })
+  //     .catch((err) => console.log(err))
+  // };
 
   return (
     <>
     <div className="flex justify-between py-5">
-      <h1>NEW & UPCOMING MOVIES</h1>
       <h6>View All</h6>
     </div>
     <div className="flex justify-between flex-wrap">
-      {movies?.map((item, index) => {
+      {movie?.map((item, index) => {
         return <MovieCard item={item} key={index} />;
       })}
     </div>

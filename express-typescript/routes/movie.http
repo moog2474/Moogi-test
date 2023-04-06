@@ -1,9 +1,15 @@
 ###
-GET http://localhost:9000/api/movie
+POST http://localhost:9000/api/movie
+Content-Type: application/json
+
+{
+    "pageSize": 1,
+    "filter": {"searchTxt": "Museum"}
+}
 
 
 ###
-GET http://localhost:9000/api/movie/573a1390f29313caabcd4135
+GET http://localhost:9000/api/movie/573a1391f29313caabcd73f4
 
 
 

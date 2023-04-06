@@ -5,7 +5,7 @@ import { Router } from "express";
 
 const route = Router();
 
-route.get("/movie", getAll);
+route.post("/movie", getAll);
 route.get("/movie/:_id", getOne)
 route.post("/movie", create)
 route.delete("/movie/:_id", deleteMovie)
