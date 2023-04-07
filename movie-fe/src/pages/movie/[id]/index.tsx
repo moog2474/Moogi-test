@@ -3,16 +3,16 @@ import Image from "next/image";
 import { IMovie } from "@/components/Movie";
 
 
-interface myProps{
+interface myProps {
   item: IMovie;
   key?: number
 }
 
-const index = ({item}: myProps) : JSX.Element => {
+const index = ({ item }: myProps): JSX.Element => {
   return (
     <div>
-      Movie Detials huudas
-
+      Movie Detials Pages
+      
     </div>
   );
 };

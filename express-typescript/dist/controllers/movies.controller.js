@@ -15,21 +15,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateMovie = exports.deleteMovie = exports.create = exports.getOne = exports.getAll = void 0;
 const movies_model_1 = __importDefault(require("../models/movies.model"));
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { pageSize, filter: { searchTxt } } = req.body;
-    const count = pageSize * 30 + 1;
-    const filter = {
-        $or: [
-            { title: { $regex: searchTxt, $options: "i" } }
-            // {plot: {$regex: searchTxt}},
-            // {fullplot: /.*m.*/}
-        ],
-    };
+    const { pageSize, searching } = req.body;
+    let searching1;
+    if (searching) {
+        searching1 = {
+            $or: [
+                { title: { $regex: searching } },
+                // { plot: { $regex: searching } },
+                // { fullplot: { $regex: searching } },
+            ],
+        };
+    }
+    else {
+        searching1 = {};
+    }
     try {
-        const result = yield movies_model_1.default.find(filter).limit(30).skip(count);
-        res.json({ status: true, result });
+        const rowCount = yield movies_model_1.default.find(searching1).count();
+        const result = yield movies_model_1.default.find(searching1).limit(30).skip(30 * (pageSize - 1));
+        if (result) {
+            res.json({ status: true, result, totalRows: rowCount });
+        }
+        else {
+            res.json({ status: false, message: "Rows not found" });
+        }
     }
     catch (err) {
-        res.json({ status: false, message: err });
+        return res.json({ status: false, message: err });
     }
 });
 exports.getAll = getAll;

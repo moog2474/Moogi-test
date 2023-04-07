@@ -4,25 +4,23 @@ import axios from "axios";
 import Link from "next/link";
 
 
-export default function Home(props : {message: string, result: [IMovie]}) {
+export default function Home(props: { message: string, result: [IMovie] }) {
   const side = typeof window ? "client" : "server";
 
   return (
     <>
       <Link href='/List'>List</Link>
-      <Movie movie = {props.result}/>
+      <Movie movie={props.result} />
       <div>You're currently on the {side}-side</div>
     </>
   );
 }
 
 
-export async function getServerSideProps(){
+export async function getServerSideProps() {
   const res = await axios.post("http://localhost:9000/api/movie", {
     pageSize: 1,
-    filter:{
-          searchTxt: "Museum"
-        }
+    searching: 'Museum'
   });
 
   return {

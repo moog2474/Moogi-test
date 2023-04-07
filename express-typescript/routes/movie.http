@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "pageSize": 1,
-    "filter": {"searchTxt": "Museum"}
+    "searching": "1000"
 }
 
 
