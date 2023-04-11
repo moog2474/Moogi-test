@@ -12,9 +12,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateMovie = exports.deleteMovie = exports.create = exports.getOne = exports.getAll = void 0;
+exports.search = exports.updateMovie = exports.deleteMovie = exports.create = exports.getOne = exports.getAll = void 0;
 const movies_model_1 = __importDefault(require("../models/movies.model"));
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield movies_model_1.default.find().limit(50).skip(21000);
+        res.json({ status: true, result });
+    }
+    catch (err) {
+        res.json({ status: false, message: err });
+    }
+});
+exports.getAll = getAll;
+const search = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { pageSize, searching } = req.body;
     let searching1;
     if (searching) {
@@ -43,7 +53,7 @@ const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return res.json({ status: false, message: err });
     }
 });
-exports.getAll = getAll;
+exports.search = search;
 const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { _id } = req.params;
     try {

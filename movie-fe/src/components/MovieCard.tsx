@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react'
 
 import { TomatoesMeter } from './Tomatoesmeter';
-import { IMovie } from './Movie';
+import { IMovie } from './IMovie'
 
 interface myProps{
     item: IMovie;
@@ -25,7 +25,7 @@ export const MovieCard = ({ item }: myProps): JSX.Element => {
                 <Link href={`/movie/${item._id}`}>
                     <h1>{item.title.slice(0,20)}</h1>
                 </Link>
-                <span>Opens up {date.toLocaleDateString()}</span>
+                {/* <span>Opens up {date.toLocaleDateString()}</span> */}
         </div>
     )} else{
         return <></>

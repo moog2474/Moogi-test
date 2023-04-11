@@ -2,7 +2,17 @@ import Movies from '../models/movies.model';
 import { Request, Response } from 'express';
 
 
-const getAll = async (req: Request, res: Response) => {
+const getAll = async (req: Request, res: Response) =>{
+    try{
+        const result = await Movies.find().limit(50).skip(21000)
+        res.json({status: true, result})
+    }
+    catch(err){
+        res.json({status: false, message: err})
+    }
+}
+
+const search = async (req: Request, res: Response) => {
 
     const { pageSize, searching } = req.body;
     let searching1
@@ -76,4 +86,4 @@ const updateMovie = async (req: Request, res: Response) => {
         res.json({ status: false, message: err })
     }
 }
-export { getAll, getOne, create, deleteMovie, updateMovie }
+export { getAll, getOne, create, deleteMovie, updateMovie, search }

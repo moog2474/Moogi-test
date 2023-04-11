@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { IMovie } from "@/components/Movie";
+import { IMovie } from "@/components/IMovie";
 
 
 interface myProps {
