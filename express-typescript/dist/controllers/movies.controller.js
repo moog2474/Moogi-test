@@ -43,7 +43,7 @@ const search = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const rowCount = yield movies_model_1.default.find(searching1).count();
         const result = yield movies_model_1.default.find(searching1).limit(30).skip(30 * (pageSize - 1));
         if (result) {
-            res.json({ status: true, result, totalRows: rowCount });
+            res.json({ status: true, result, rowCount });
         }
         else {
             res.json({ status: false, message: "Rows not found" });

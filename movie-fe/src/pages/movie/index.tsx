@@ -14,11 +14,12 @@ interface movieProps {
   pageSize: number;
 }
 
-const index = ({
+export default function index({
   movies,
   rowCount,
   pageSize
-}: movieProps): JSX.Element => {
+}: movieProps): JSX.Element {
+  
   return (
     <>
       <Filter/>
@@ -27,18 +28,22 @@ const index = ({
           return <MovieCard item={item} key={index}/>
         })}
       </div>
-      <div className="flex">
+      <div className="flex justify-center">
         <Pagination rowCount={rowCount} pageSize={pageSize}/>
       </div>
     </>
   );
 };
 
-export default index;
+
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) =>{
-  const pageSize = ctx.query ? ctx.query.pageSize ? ctx.query.pageSize: 1 : 1;
+  const pageSize = ctx.query 
+    ? ctx.query.pageSize 
+     ? ctx.query.pageSize
+     : 1
+    : 1;
 
   const res = await axios.post(`http://localhost:8080/api/movie`,{
     pageSize: pageSize,

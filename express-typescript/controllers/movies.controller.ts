@@ -34,7 +34,7 @@ const search = async (req: Request, res: Response) => {
         const rowCount = await Movies.find(searching1).count();
         const result = await Movies.find(searching1).limit(30).skip(30 * (pageSize - 1));
         if (result) {
-            res.json({ status: true, result, totalRows: rowCount });
+            res.json({ status: true, result, rowCount });
         } else {
             res.json({ status: false, message: "Rows not found" });
         }

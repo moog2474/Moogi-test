@@ -9,10 +9,9 @@ import { Pagination } from "@/components/Pagination";
 export default function Home(): JSX.Element {
 
   return (
-    <>
- 
-      <Movie/>
-    </>
+      <>
+        <Movie/>
+      </>
   );
 }
 
