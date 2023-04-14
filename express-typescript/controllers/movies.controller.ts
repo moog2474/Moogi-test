@@ -2,6 +2,16 @@ import Movies from '../models/movies.model';
 import { Request, Response } from 'express';
 
 
+const getGenres = async (req: Request, res: Response)=>{
+    try{
+        const result = await Movies.aggregate([{$unwind: '$genres'}, {$group: {_id: "$genres", count:{$sum: 1}}}])
+        res.json({status: true, result})
+    }
+    catch(err){
+        res.json({status: false, message: err})
+    }
+}
+
 const getAll = async (req: Request, res: Response) =>{
     try{
         const result = await Movies.find().limit(50).skip(21000)
@@ -86,4 +96,4 @@ const updateMovie = async (req: Request, res: Response) => {
         res.json({ status: false, message: err })
     }
 }
-export { getAll, getOne, create, deleteMovie, updateMovie, search }
+export { getAll, getOne, create, deleteMovie, updateMovie, search, getGenres }

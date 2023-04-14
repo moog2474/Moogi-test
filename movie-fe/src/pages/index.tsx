@@ -3,7 +3,6 @@ import Movie from "@/components/Movie";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Pagination } from "@/components/Pagination";
 
 
 export default function Home(): JSX.Element {

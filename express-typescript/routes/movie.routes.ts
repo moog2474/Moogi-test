@@ -1,4 +1,4 @@
-import { getAll, getOne, create, deleteMovie, updateMovie, search } from "../controllers/movies.controller";
+import { getAll, getOne, create, deleteMovie, updateMovie, search, getGenres } from "../controllers/movies.controller";
 
 import { Router } from "express";
 
@@ -11,6 +11,6 @@ route.get("/movie/:_id", getOne)
 route.post("/movie", create)
 route.delete("/movie/:_id", deleteMovie)
 route.put("/movie/:_id", updateMovie)
-
+route.get("/moviegenres", getGenres)
 
 export default route;

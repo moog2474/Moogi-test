@@ -12,7 +12,8 @@ export const Pagination = ({
 }) => {
   const page = Math.floor(rowCount / 30); 
 
-  const pageData = new Array(10).fill(0);
+  const pageData = new Array(page).fill(0);
+  
 
   const activeClass = {
     active: "relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
