@@ -13,8 +13,12 @@ export const Filter = () => {
 
   const getData = () => {
     axios
-      .post("http://localhost:8080/api/movie", { pageSize: 1, limit: 10 })
-      .then((res) => setGenres(res.data.result)
+      .get("http://localhost:8080/api/moviegenres")
+      .then((res) => {
+        setGenres(res.data.result) 
+        console.log(res.data.result);
+      })
+      .catch(err=>console.log(err)
       )
   };
 
