@@ -5,7 +5,7 @@ import { Router } from "express";
 
 const route = Router();
 
-route.post("/movie", search);
+route.post("/moviesearch", search);
 route.get("/movies", getAll)
 route.get("/movie/:_id", getOne)
 route.post("/movie", create)
